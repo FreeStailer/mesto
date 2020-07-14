@@ -7,7 +7,7 @@
     margin: 0;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 690px) {
     .profile__comment {
       font-size: 14px;
       grid-column: 1/3;

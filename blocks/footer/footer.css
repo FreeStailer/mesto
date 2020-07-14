@@ -3,14 +3,10 @@
     flex-direction: row;
     justify-content: start;
     margin: 0 auto;
+    max-width: 882px;
+    padding: 0 1em;
 }
 
-@media screen and (max-width: 1024px) {
-    .footer {
-        max-width: 882px;
-        padding: 0 1em;
-    }
-}
 @media screen and (max-width: 480px) {
     .footer {
     padding: 0 19px;

@@ -7,16 +7,10 @@
     padding-left: 30px;
 }
 
-@media screen and (max-width: 768px) {
-    .profile__info {
-      grid-template-columns: minmax(min-content, max-content) min-content;
-    }
-}
-
 @media screen and (max-width: 480px) {
     .profile__info {
         padding: 0;
-        gap: 14px 5px;
+        gap: 0 5px;
         justify-items: center;
     }
 }

@@ -4,14 +4,8 @@
     grid-template-columns: repeat(3, minmax(auto, 460px));
     gap: 20px 18px;
     margin: 0 auto;
-    padding-top: 50px;
+    padding: 50px 1em 0 1em;
     justify-content: center;
-}
-
-@media screen and (max-width: 1024px) {
-    .cards {
-        padding: 50px 1em 0 1em;        
-    }
 }
 
 @media screen and (max-width: 768px) {
