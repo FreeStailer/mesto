@@ -1,0 +1,6 @@
+.card__text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 25px 15px 31px 21px;
+}

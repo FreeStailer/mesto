@@ -1,0 +1,9 @@
+.modal__content {
+    position: relative;
+    max-width: 430px;
+    background: white;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 34px 36px 36px 36px;
+}

@@ -1,2 +1,101 @@
-123467jm
-lbhgc
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Место</title>
+  <link rel="stylesheet" href="./pages/index.css">
+  <meta name="description" content="О Местах">
+  <meta name="keywords" content="html, css, javascript">
+  <meta name="author" content="Алексей Суслин">
+</head>
+<body class="page">
+    <div class="page__content">
+        <header class="header">
+            <div class="header__logo"></div>
+        </header>
+        <main class="main">
+            <section class="profile">
+                <div class="profile__card">
+                    <img src="./images/avatar.jpg" alt="Аватар профиля" class="profile__avatar">
+                    <div class="profile__info">
+                        <h1 class="profile__name">Жак-Ив Кусто</h1>
+                        <button class="profile__button-edit"></button>
+                        <h2 class="profile__comment">Исследователь океана</h2>
+                    </div>
+                </div>
+                <button class="profile__button-add"></button>
+            </section>
+            <section class="cards">
+                <div class="card">
+                    <img src="images/Karachaevsk.jpg" class="card__photo" alt="Карачаевск">
+                    <div class="card__text">
+                        <h3 class="card__title">Карачаевск</h3>
+                        <button class="card__like">
+                        </button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/Elbrus.png" class="card__photo" alt="Гора эльбрус">
+                    <div class="card__text">
+                        <h3 class="card__title">Гора эльбрус</h3>
+                        <button class="card__like">
+                        </button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/Dombai.png" class="card__photo" alt="Домбай">
+                    <div class="card__text">
+                        <h3 class="card__title">Домбай</h3>
+                        <button class="card__like">
+                        </button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/Elbrus.png" class="card__photo" alt="Гора эльбрус">
+                    <div class="card__text">
+                        <h3 class="card__title">Гора эльбрус</h3>
+                        <button class="card__like">
+                        </button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/Dombai.png" class="card__photo" alt="Домбай">
+                    <div class="card__text">
+                        <h3 class="card__title">Домбай</h3>
+                        <button class="card__like">
+                        </button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/Karachaevsk.jpg" class="card__photo" alt="Карачаево-Ч...">
+                    <div class="card__text">
+                        <h3 class="card__title">Карачаево-Ч...</h3>
+                        <button class="card__like">
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__copyright">©2020 Mesto Russia</p>
+        </footer>
+    </div>
+        <div class="modal">
+            <div class="modal__content">
+                <button class="modal__button-close"></button>
+                <form class="form" action="" method="post" name="Edit profile">
+                    <h2 class="form__heading">Редактировать профиль</h2>
+                    <fieldset class="form__input">
+                        <label for="name" class="form__label"></label>
+                        <input type="text" name="name" id="name" class="form__item" value="name">
+                        <label for="comment" class="form__label"></label>
+                        <input type="text" id="comment" name="comment" class="form__item" value="comment">&nbsp;         
+                        <input type="submit" class="form__button" value="Сохранить">
+                    </fieldset>           
+                </form>
+            </div>
+        </div>
+        <script src="./scripts/index.js"></script>
+</body>

@@ -1,0 +1,16 @@
+.profile__comment {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: white;
+    margin: 0;
+}
+
+@media screen and (max-width: 480px) {
+    .profile__comment {
+      font-size: 14px;
+      grid-column: 1/3;
+    }
+  }
+  

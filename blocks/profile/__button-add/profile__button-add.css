@@ -1,0 +1,26 @@
+.profile__button-add {
+    background-image: url(../../../images/Add_Button.svg);
+    background-size: initial;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 2px;
+    width: 150px;
+    height: 50px;
+    align-self: center;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.profile__button-add:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 480px) {
+    .profile__button-add {
+        background-image: url(../../../images/Add_Button_s.svg);
+        width: 282px;
+        height: 50px;
+    }
+}
