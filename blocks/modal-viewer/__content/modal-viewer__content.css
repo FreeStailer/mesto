@@ -1,0 +1,18 @@
+.modal-viewer__content {
+    position: relative;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    max-width: 75vw;
+    max-height: 75vh;
+    background: none;
+    padding: 0;
+}
+  
+  
+@media screen and (max-width: 480px) {
+    .modal-viewer__content {
+        max-width: 240px;
+        padding: 30px 20px;  
+    }
+}

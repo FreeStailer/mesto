@@ -1,4 +1,4 @@
-.modal__open {
+.modal-viewer__open {
     visibility: visible;
     opacity: 1;
 }

@@ -1,4 +1,4 @@
-.modal__button-close {
+.modal-viewer__button-close {
     background-image: url(../../../images/Close_icon.svg);
     background-color: transparent;
     border: none;
@@ -13,19 +13,20 @@
     cursor: pointer;
 }
 
-.modal__button-close:hover {
+.modal-viewer__button-close:hover {
     opacity: 0.7;
 }
 
-.modal__button-close:focus {
+.modal-viewer__button-close:focus {
     outline: none;
   }
 
 @media screen and (max-width: 480px) {
-    .modal__button-close {
+    .modal-viewer__button-close {
         width: 30px;
         height: 30px;
         top: -30px;
         right: -30px;
     }
 }
+  

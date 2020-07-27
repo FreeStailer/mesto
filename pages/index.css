@@ -19,6 +19,7 @@
 @import url(../blocks/card/__text/card__text.css);
 @import url(../blocks/card/__title/card__title.css);
 @import url(../blocks/card/__like/card__like.css);
+@import url(../blocks/card/__delete/card__delete.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/modal/modal.css);
@@ -31,3 +32,20 @@
 @import url(../blocks/form/__label/form__label.css);
 @import url(../blocks/form/__item/form__item.css);
 @import url(../blocks/form/__button/form__button.css);
+@import url(../blocks/modal-card/modal-card.css);
+@import url(../blocks/modal-card/__content/modal-card__content.css);
+@import url(../blocks/modal-card/__button-close/modal-card__button-close.css);
+@import url(../blocks/modal-card/__open/modal-card__open.css);
+@import url(../blocks/form-card/form-card.css);
+@import url(../blocks/form-card/__heading/form-card__heading.css);
+@import url(../blocks/form-card/__input/form-card__input.css);
+@import url(../blocks/form-card/__label/form-card__label.css);
+@import url(../blocks/form-card/__item/form-card__item.css);
+@import url(../blocks/form-card/__button/form-card__button.css);
+
+@import url(../blocks/modal-viewer/modal-viewer.css);
+@import url(../blocks/modal-viewer/__open/modal-viewer__open.css);
+@import url(../blocks/modal-viewer/__content/modal-viewer__content.css);
+@import url(../blocks/modal-viewer/__button-close/modal-viewer__button-close.css);
+@import url(../blocks/card-viewer/__photo/card-viewer__photo.css);
+@import url(../blocks/card-viewer/__title/card-viewer__title.css);

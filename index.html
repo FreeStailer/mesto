@@ -28,71 +28,50 @@
                 <button type="button" class="profile__button-add"></button>
             </section>
             <section class="cards">
-                <div class="card">
-                    <img src="images/Karachaevsk.jpg" class="card__photo" alt="Карачаевск">
-                    <div class="card__text">
-                        <h2 class="card__title">Карачаевск</h2>
-                        <button type="button" class="card__like">
-                        </button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/Elbrus.png" class="card__photo" alt="Гора эльбрус">
-                    <div class="card__text">
-                        <h2 class="card__title">Гора эльбрус</h2>
-                        <button type="button" class="card__like">
-                        </button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/Dombai.png" class="card__photo" alt="Домбай">
-                    <div class="card__text">
-                        <h2 class="card__title">Домбай</h2>
-                        <button type="button" class="card__like">
-                        </button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/Elbrus.png" class="card__photo" alt="Гора эльбрус">
-                    <div class="card__text">
-                        <h2 class="card__title">Гора эльбрус</h2>
-                        <button type="button" class="card__like">
-                        </button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/Dombai.png" class="card__photo" alt="Домбай">
-                    <div class="card__text">
-                        <h2 class="card__title">Домбай</h2>
-                        <button type="button" class="card__like">
-                        </button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/Karachaevsk.jpg" class="card__photo" alt="Карачаево-Ч...">
-                    <div class="card__text">
-                        <h2 class="card__title">Карачаево-Ч...</h2>
-                        <button type="button" class="card__like">
-                        </button>
-                    </div>
-                </div>
             </section>
         </main>
         <footer class="footer">
             <p class="footer__copyright">©2020 Mesto Russia</p>
         </footer>
     </div>
-        <div class="modal">
-            <div class="modal__content">
-                <button type="button" class="modal__button-close"></button>
-                <h2 class="form__heading">Редактировать профиль</h2>
-                <form class="form" action="#" method="post" name="Edit profile">
-                    <input type="text" name="name" id="name" class="form__item" value="name">
-                    <input type="text" id="comment" name="comment" class="form__item" value="comment">&nbsp;         
-                    <input type="submit" class="form__button" value="Сохранить">
-                    </fieldset>           
-                </form>
+    <div class="modal">
+        <div class="modal__content">
+            <button type="button" class="modal__button-close"></button>
+            <h2 class="form__heading">Редактировать профиль</h2>
+            <form class="form" action="#" method="post" name="Edit profile">
+                <input type="text" name="name" id="name" class="form__item" value="name">
+                <input type="text" id="comment" name="comment" class="form__item" value="comment">&nbsp;         
+                <input type="submit" class="form__button" value="Сохранить">        
+            </form>
+        </div>
+    </div>
+    <div class="modal-card">
+        <div class="modal-card__content">
+            <button type="button" class="modal-card__button-close"></button>
+            <h2 class="form-card__heading">Новое место</h2>
+            <form class="form-card" action="#" method="post" name="Load_cards">
+                <input type="text" name="title" id="title" class="form-card__item" placeholder="Название">
+                <input type="text" id="photo" name="photo" class="form-card__item" placeholder="Ссылка на картинку">&nbsp;         
+                <input type="submit" class="form-card__button" value="Создать">         
+            </form>
+        </div>
+    </div>
+    <div class="modal-viewer">
+        <div class="modal-viewer__content">
+            <button type="button" class="modal-viewer__button-close"></button>
+            <img src="" class="card-viewer__photo" alt="Картинка">
+            <h2 class="card-viewer__title"></h2>
+        </div>
+    </div>
+    <template class='template-card'>
+        <div class="card">
+            <img src="" class="card__photo" alt="Картинка">
+            <button type="button" class="card__delete"></button>
+            <div class="card__text">
+                <h2 class="card__title"></h2>
+                <button type="button" class="card__like"></button>
             </div>
         </div>
-        <script src="./scripts/index.js"></script>
+    </template>
+    <script src="./scripts/index.js"></script>
 </body>

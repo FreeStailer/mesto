@@ -1,4 +1,4 @@
-.modal__button-close {
+.modal-card__button-close {
     background-image: url(../../../images/Close_icon.svg);
     background-color: transparent;
     border: none;
@@ -13,16 +13,16 @@
     cursor: pointer;
 }
 
-.modal__button-close:hover {
+.modal-card__button-close:hover {
     opacity: 0.7;
 }
 
-.modal__button-close:focus {
+.modal-card__button-close:focus {
     outline: none;
   }
 
-@media screen and (max-width: 480px) {
-    .modal__button-close {
+  @media screen and (max-width: 480px) {
+    .modal-card__button-close {
         width: 30px;
         height: 30px;
         top: -30px;
