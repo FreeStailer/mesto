@@ -31,11 +31,11 @@ const Modal = document.querySelector(".modal"); //ищем модальное о
 const closeModalWindow = document.querySelector(".modal__button-close"); //ищем кнопку закрытия окна профиля
 
 //Общие атрибуты профиля в ДОМ
-let formElement = document.querySelector(".form"); //форма модального окна 
-let profileName = document.querySelector(".profile__name"); //имя в профиле
-let profileComment = document.querySelector(".profile__comment"); //коментарий в профиле
-let nameInput = document.querySelector("#name"); //поле ввода имени
-let jobInput = document.querySelector("#comment"); //поле ввода комментария
+const formElement = document.querySelector(".form"); //форма модального окна 
+const profileName = document.querySelector(".profile__name"); //имя в профиле
+const profileComment = document.querySelector(".profile__comment"); //коментарий в профиле
+const nameInput = document.querySelector("#name"); //поле ввода имени
+const jobInput = document.querySelector("#comment"); //поле ввода комментария
 
 //общие переменные модалки загрузки карточки
 const openModalCardWindow = document.querySelector(".profile__button-add"); //ищем кнопку открытия окна загрузки карточки
@@ -43,9 +43,9 @@ const ModalCard = document.querySelector(".modal-card"); //ищем модаль
 const closeModalCardWindow = document.querySelector(".modal-card__button-close"); //ищем кнопку закрытия окна загрузки карточки
 
 //Общие атрибуты окна загрузки карточек в ДОМ
-let formCardElement = document.querySelector(".form-card"); // вдруг пригодится, форма модального окна
-let titleInput = document.querySelector("#title"); //поле ввода названия карточки
-let photoInput = document.querySelector("#photo"); //поле ввода ссылки
+const formCardElement = document.querySelector(".form-card"); // вдруг пригодится, форма модального окна
+const titleInput = document.querySelector("#title"); //поле ввода названия карточки
+const photoInput = document.querySelector("#photo"); //поле ввода ссылки
 const cardList = document.querySelector(".cards");
 const cardTemplate = document.querySelector(".template-card").content.querySelector(".card");
  
@@ -60,14 +60,14 @@ const modalViewerPhotoUrl = modalViewer.querySelector(".card-viewer__photo");
 
 //функция открытия окна и заполнения содержимым из профиля
 function openModal() {
-    Modal.classList.add("modal_open");
+    Modal.classList.add("modal__open");
     nameInput.value = profileName.textContent; //подставляем имя в модалку
     jobInput.value = profileComment.textContent; //подставляем комент в модалку
 }
 
 //функция закрытия окна редактирования профиля
 function closeModal() {
-    Modal.classList.remove("modal_open");
+    Modal.classList.remove("modal__open");
 }
 
 //функция открытия и закрытия окна загрузки карточки
