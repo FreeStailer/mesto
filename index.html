@@ -27,14 +27,17 @@
                 </div>
                 <button type="button" class="profile__button-add"></button>
             </section>
-            <section class="cards">
+            <section>
+                <ul class="cards">
+
+                </ul>
             </section>
         </main>
         <footer class="footer">
             <p class="footer__copyright">©2020 Mesto Russia</p>
         </footer>
     </div>
-    <div class="modal">
+    <div class="modal modal_profile">
         <div class="modal__content">
             <button type="button" class="modal__button-close"></button>
             <h2 class="form__heading">Редактировать профиль</h2>
@@ -45,33 +48,33 @@
             </form>
         </div>
     </div>
-    <div class="modal-card">
-        <div class="modal-card__content">
-            <button type="button" class="modal-card__button-close"></button>
-            <h2 class="form-card__heading">Новое место</h2>
-            <form class="form-card" action="#" method="post" name="Load_cards">
-                <input type="text" name="title" id="title" class="form-card__item" placeholder="Название">
-                <input type="text" id="photo" name="photo" class="form-card__item" placeholder="Ссылка на картинку">&nbsp;         
-                <input type="submit" class="form-card__button" value="Создать">         
+    <div class="modal modal_card">
+        <div class="modal__content">
+            <button type="button" class="modal__button-close"></button>
+            <h2 class="form__heading">Новое место</h2>
+            <form class="form" action="#" method="post" name="Load_cards">
+                <input type="text" name="title" id="title" class="form__item" placeholder="Название">
+                <input type="url" id="photo" name="photo" class="form__item" placeholder="Ссылка на картинку" required>&nbsp;         
+                <input type="submit" class="form__button" value="Создать">         
             </form>
         </div>
     </div>
-    <div class="modal-viewer">
-        <div class="modal-viewer__content">
-            <button type="button" class="modal-viewer__button-close"></button>
-            <img src="" class="card-viewer__photo" alt="Картинка">
-            <h2 class="card-viewer__title"></h2>
+    <div class="modal modal_viewer">
+        <div class="modal__content modal__content_viewer">
+            <button type="button" class="modal__button-close"></button>
+            <img src="" class="modal__photo" alt="Картинка">
+            <h2 class="modal__title"></h2>
         </div>
     </div>
     <template class='template-card'>
-        <div class="card">
+        <li class="card">
             <img src="" class="card__photo" alt="Картинка">
             <button type="button" class="card__delete"></button>
             <div class="card__text">
                 <h2 class="card__title"></h2>
                 <button type="button" class="card__like"></button>
             </div>
-        </div>
+        </li>
     </template>
     <script src="./scripts/index.js"></script>
 </body>

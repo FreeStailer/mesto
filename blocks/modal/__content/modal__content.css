@@ -7,3 +7,17 @@
     border-radius: 10px;
     padding: 34px 36px 36px 36px;
 }
+
+@media screen and (max-width: 480px) {
+    .modal__content {
+        max-width: 240px;
+        padding: 30px 20px;
+    }
+}
+
+.modal__content_viewer {
+    background: none;
+    padding: 0;
+    max-width: 75vw;
+    max-height: 75vh;
+}
