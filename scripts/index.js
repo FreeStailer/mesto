@@ -55,7 +55,6 @@ const cardTemplate = document.querySelector(".template-card").content.querySelec
 const modalViewerTitle = modalViewer.querySelector(".modal__title");
 const modalViewerPhotoUrl = modalViewer.querySelector(".modal__photo");
 
-
 //функция открытия и закрытия окна
 function toggleModal(modalWindow) {
     modalWindow.classList.toggle("modal__open");
@@ -111,7 +110,7 @@ function addCardSubmitHandler (evt) {
 
 //функции Просмоторщика
 function photoClick(src, textcontent) {
-    modalViewer.classList.add("modal__open");
+    toggleModal(modalViewer); //modalViewer.classList.toggle("modal__open");
     modalViewerTitle.textContent = textcontent;
     modalViewerPhotoUrl.src = src;
     overlayToggle();
@@ -129,14 +128,14 @@ const escCloseModalWindow = (evt) => {
     };
 
 const overlayToggle = () => {
-    overlay.classList.toggle('modal__open');
+    overlay.classList.toggle('modal__open');//toggleModal(overlay) сбивает просмотр
     document.addEventListener('keydown', escCloseModalWindow);
     };
 
 const closeModalWindow = () => {
     const openModalWindow = document.querySelectorAll(".modal__open");
     openModalWindow.forEach(function (item) {
-        item.classList.remove('modal__open')
+        toggleModal(item)//item.classList.toggle('modal__open')
         document.removeEventListener('keydown', escCloseModalWindow);
         })
 };
@@ -178,6 +177,8 @@ formElement.addEventListener("submit", formSubmitHandler);
 //загрузки карточки
 openCardModalWindow.addEventListener("click", () => {
     toggleModal(modalAddCard);
+    formCardElement.reset();
+    enableValidation(settings);
 });
 closeAddCard.addEventListener("click", () => {
     toggleModal(modalAddCard);
