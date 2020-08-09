@@ -147,13 +147,13 @@ modalViewer.addEventListener('click', (evt) => {
     }
 });
 
-modalEditProfile.addEventListener('click', (evt) => {
+modalEditProfile.addEventListener('mousedown', (evt) => {
     if(!evt.target.closest('.modal__content')) {
       closeModalWindow(modalEditProfile);
     }
 });
 
-modalAddCard.addEventListener('click', (evt) => {
+modalAddCard.addEventListener('mousedown', (evt) => {
     if(!evt.target.closest('.modal__content')) {
       closeModalWindow(modalAddCard);
     }
