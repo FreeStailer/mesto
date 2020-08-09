@@ -117,7 +117,9 @@ function photoClick(src, textcontent) {
     overlayToggle();
   }
 
-//закрытие в пустом месте + ескейп, блоком тут оставлю для удобства
+//закрытие в пустом месте + ескейп, 
+//оставлю блоком тут для удобства
+
 const overlay = document.querySelector('.overlay');
 
 const escCloseModalWindow = (evt) => {
@@ -134,12 +136,28 @@ const overlayToggle = () => {
 const closeModalWindow = () => {
     const openModalWindow = document.querySelectorAll(".modal__open");
     openModalWindow.forEach(function (item) {
-    item.classList.remove('modal__open')
-    document.removeEventListener('keydown', escCloseModalWindow);
-    })
+        item.classList.remove('modal__open')
+        document.removeEventListener('keydown', escCloseModalWindow);
+        })
 };
-//modalViewer.addEventListener("click", closeModalWindow);
-overlay.addEventListener("click", closeModalWindow);
+//закрытие в пустых местах модальных окон
+modalViewer.addEventListener('click', (evt) => {
+    if(!evt.target.closest('.modal__photo')) {
+      closeModalWindow(modalViewer);
+    }
+});
+
+modalEditProfile.addEventListener('click', (evt) => {
+    if(!evt.target.closest('.modal__content')) {
+      closeModalWindow(modalEditProfile);
+    }
+});
+
+modalAddCard.addEventListener('click', (evt) => {
+    if(!evt.target.closest('.modal__content')) {
+      closeModalWindow(modalAddCard);
+    }
+});
 
 // слушатели нажатий и последующие действия
 //редактирования профиля
@@ -147,7 +165,7 @@ openProfileModalWindow.addEventListener("click", () =>{
     if(!modalEditProfile.classList.contains("modal__open")) {
         nameInput.value = profileName.textContent; //подставляем имя в модалку
         jobInput.value = profileComment.textContent; //подставляем комент в модалку
-    }
+        }
     toggleModal(modalEditProfile);
 });
 

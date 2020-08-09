@@ -12,24 +12,3 @@
     z-index: 10;
     transition: opacity 0.8s linear, visibility 0.8s linear;
 }
-
-.modal_profile {
-    background:rgba(0, 0, 0, 0.5);
-}
-
-.modal_card {
-    background:rgba(0, 0, 0, 0.5);
-}
-
-.modal_viewer {
-    background: rgba(0,0,0, 0.9);
-    padding: 0;
-}
-
-.modal__title {
-    font-size: 12px;
-    font-weight: normal;
-    font-style: normal;
-    line-height: 1.2;
-    color: white;
-}
