@@ -9,6 +9,7 @@
     align-items: center;
     visibility: hidden;
     opacity: 0;
+    z-index: 10;
     transition: opacity 0.8s linear, visibility 0.8s linear;
 }
 
@@ -31,9 +32,4 @@
     font-style: normal;
     line-height: 1.2;
     color: white;
-}
-
-.modal__photo {
-    max-width: 75vw;
-    max-height: 75vh;
 }

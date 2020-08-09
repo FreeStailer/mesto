@@ -38,11 +38,11 @@ const closeAddCard = modalAddCard.querySelector(".modal__button-close");
 const closeViewer = modalViewer.querySelector(".modal__button-close");
 
 //атрибуты профиля в ДОМ
-const formProfileElement = modalEditProfile.querySelector(".form"); //форма модального окна 
+const formElement = modalEditProfile.querySelector(".form"); //форма модального окна 
 let profileName = document.querySelector(".profile__name"); //имя в профиле
 let profileComment = document.querySelector(".profile__comment"); //коментарий в профиле
-let nameInput = formProfileElement.querySelector("#name"); //поле ввода имени
-let jobInput = formProfileElement.querySelector("#comment"); //поле ввода комментария
+let nameInput = formElement.querySelector("#name"); //поле ввода имени
+let jobInput = formElement.querySelector("#comment"); //поле ввода комментария
 
 //атрибуты загрузки карточки в ДОМ
 const formCardElement = modalAddCard.querySelector(".form"); // форма модального окна загрузки карточки
@@ -59,6 +59,7 @@ const modalViewerPhotoUrl = modalViewer.querySelector(".modal__photo");
 //функция открытия и закрытия окна
 function toggleModal(modalWindow) {
     modalWindow.classList.toggle("modal__open");
+    overlayToggle();
 }
 
 //функция передачи данных из формы в профиль на странице
@@ -113,7 +114,32 @@ function photoClick(src, textcontent) {
     modalViewer.classList.add("modal__open");
     modalViewerTitle.textContent = textcontent;
     modalViewerPhotoUrl.src = src;
+    overlayToggle();
   }
+
+//закрытие в пустом месте + ескейп, блоком тут оставлю для удобства
+const overlay = document.querySelector('.overlay');
+
+const escCloseModalWindow = (evt) => {
+    if (evt.key === 'Escape') {
+    closeModalWindow()
+    }
+    };
+
+const overlayToggle = () => {
+    overlay.classList.toggle('modal__open');
+    document.addEventListener('keydown', escCloseModalWindow);
+    };
+
+const closeModalWindow = () => {
+    const openModalWindow = document.querySelectorAll(".modal__open");
+    openModalWindow.forEach(function (item) {
+    item.classList.remove('modal__open')
+    document.removeEventListener('keydown', escCloseModalWindow);
+    })
+};
+//modalViewer.addEventListener("click", closeModalWindow);
+overlay.addEventListener("click", closeModalWindow);
 
 // слушатели нажатий и последующие действия
 //редактирования профиля
@@ -129,7 +155,7 @@ closeProfile.addEventListener("click", () => {
     toggleModal(modalEditProfile)
 });
 
-formProfileElement.addEventListener("submit", formSubmitHandler);
+formElement.addEventListener("submit", formSubmitHandler);
 
 //загрузки карточки
 openCardModalWindow.addEventListener("click", () => {
@@ -147,5 +173,5 @@ closeViewer.addEventListener("click", () => {
 
 //загрузка массива карточек на сайт
 initialCards.forEach((data) => {
-    renderCard(data)
+    renderCard(data);
  });

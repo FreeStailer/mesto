@@ -1,3 +1,15 @@
 .form__label {
-    display: block;
-  }  
+    display: flex;
+    margin-bottom: 30px;
+    flex-direction: column;
+  }
+
+.form__label:last-of-type {
+  margin-bottom: 48px;
+}
+
+@media screen and (max-width: 480px) {
+  .form__label:last-of-type {
+    margin-bottom: 36px;
+  }
+}

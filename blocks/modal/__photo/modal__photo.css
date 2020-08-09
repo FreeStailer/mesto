@@ -1,5 +1,5 @@
-.card-viewer__photo {
+.modal__photo {
     max-width: 75vw;
     max-height: 75vh;
-    z-index: 6;
+    z-index: 100;
 }

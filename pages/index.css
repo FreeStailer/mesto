@@ -26,9 +26,11 @@
 @import url(../blocks/modal/__content/modal__content.css);
 @import url(../blocks/modal/__button-close/modal__button-close.css);
 @import url(../blocks/modal/__open/modal__open.css);
+@import url(../blocks/modal/__photo/modal__photo.css);
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__heading/form__heading.css);
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__label/form__label.css);
 @import url(../blocks/form/__item/form__item.css);
 @import url(../blocks/form/__button/form__button.css);
+@import url(../blocks/overlay/overlay.css);
