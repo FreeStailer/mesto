@@ -54,23 +54,35 @@ const cardTemplate = document.querySelector(".template-card").content.querySelec
 //атрибуты окна предпросмотра
 const modalViewerTitle = modalViewer.querySelector(".modal__title");
 const modalViewerPhotoUrl = modalViewer.querySelector(".modal__photo");
+const ModalWindow = document.querySelectorAll(".modal__open");
 
-//функция открытия и закрытия окна
-function toggleModal(modalWindow) {
-    modalWindow.classList.toggle("modal__open");
-    overlayToggle();
-}
+//функции открытия и закрытия окон + ескейп
+const openModalWindow = (modalElement) => {
+    modalElement.classList.add("modal__open");
+    document.addEventListener('keydown', escCloseModalWindow);
+};
 
+const closeModalWindow = (modalElement) => {
+    modalElement.classList.remove("modal__open");
+    document.removeEventListener('keydown', escCloseModalWindow);
+};
+
+const escCloseModalWindow = (evt) => {
+    const openWindow = document.querySelector(".modal__open");
+    if (evt.key === 'Escape') {
+    closeModalWindow(openWindow)
+}};
+////////////////////////////////////////
 //функция передачи данных из формы в профиль на странице
-function formSubmitHandler(evt) {
+const formSubmitHandler = (evt) => {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileComment.textContent = jobInput.value;
-    toggleModal(modalEditProfile);
+    closeModalWindow(modalEditProfile);
 }
 
 //функция создания карточки
-function createCard(data) {
+const createCard = (data) => {
     const cardElement = cardTemplate.cloneNode(true);
     const cardTitle = cardElement.querySelector(".card__title");
     const cardPhoto = cardElement.querySelector(".card__photo");
@@ -95,51 +107,27 @@ function createCard(data) {
 }
 
 //функция загрузки массива
-function renderCard(data) {
+const renderCard = (data) => {
     cardList.prepend(createCard(data));  //порядок с начала и функция создания карточки
 }
 
 //функция нажатия кнопки сохранить карточку
-function addCardSubmitHandler (evt) {
+const addCardSubmitHandler = (evt) => {
     evt.preventDefault();
     renderCard({name:titleInput.value, link: photoInput.value});
-    toggleModal(modalAddCard);
+    closeModalWindow(modalAddCard);
     titleInput.value = "";
     photoInput.value = "";
 }
 
 //функции Просмоторщика
-function photoClick(src, textcontent) {
-    toggleModal(modalViewer); //modalViewer.classList.toggle("modal__open");
+const photoClick = (src, textcontent) => {
+    openModalWindow(modalViewer); //modalViewer.classList.toggle("modal__open");
     modalViewerTitle.textContent = textcontent;
     modalViewerPhotoUrl.src = src;
-    overlayToggle();
   }
 
-//закрытие в пустом месте + ескейп, 
-//оставлю блоком тут для удобства
-
-const overlay = document.querySelector('.overlay');
-
-const escCloseModalWindow = (evt) => {
-    if (evt.key === 'Escape') {
-    closeModalWindow()
-    }
-    };
-
-const overlayToggle = () => {
-    overlay.classList.toggle('modal__open');//toggleModal(overlay) сбивает просмотр
-    document.addEventListener('keydown', escCloseModalWindow);
-    };
-
-const closeModalWindow = () => {
-    const openModalWindow = document.querySelectorAll(".modal__open");
-    openModalWindow.forEach(function (item) {
-        toggleModal(item)//item.classList.toggle('modal__open')
-        document.removeEventListener('keydown', escCloseModalWindow);
-        })
-};
-//закрытие в пустых местах модальных окон
+//закрытие модальных окон кликом по оверлею
 modalViewer.addEventListener('click', (evt) => {
     if(!evt.target.closest('.modal__photo')) {
       closeModalWindow(modalViewer);
@@ -165,29 +153,29 @@ openProfileModalWindow.addEventListener("click", () =>{
         nameInput.value = profileName.textContent; //подставляем имя в модалку
         jobInput.value = profileComment.textContent; //подставляем комент в модалку
         }
-    toggleModal(modalEditProfile);
+    openModalWindow(modalEditProfile);
 });
 
 closeProfile.addEventListener("click", () => {
-    toggleModal(modalEditProfile)
+    closeModalWindow(modalEditProfile)
 });
 
 formElement.addEventListener("submit", formSubmitHandler);
 
 //загрузки карточки
 openCardModalWindow.addEventListener("click", () => {
-    toggleModal(modalAddCard);
+    openModalWindow(modalAddCard);
     formCardElement.reset();
     enableValidation(settings);
 });
 closeAddCard.addEventListener("click", () => {
-    toggleModal(modalAddCard);
+    closeModalWindow(modalAddCard);
 });
 formCardElement.addEventListener("submit", addCardSubmitHandler);
 
 //вкл выкл просмоторщик
 closeViewer.addEventListener("click", () => {
-    toggleModal(modalViewer);
+    openModalWindow(modalViewer);
 });
 
 //загрузка массива карточек на сайт
