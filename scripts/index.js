@@ -54,21 +54,21 @@ const cardTemplate = document.querySelector(".template-card").content.querySelec
 //атрибуты окна предпросмотра
 const modalViewerTitle = modalViewer.querySelector(".modal__title");
 const modalViewerPhotoUrl = modalViewer.querySelector(".modal__photo");
-const ModalWindow = document.querySelectorAll(".modal__open");
+const ModalWindow = document.querySelectorAll(".modal_open");
 
 //функции открытия и закрытия окон + ескейп
 const openModalWindow = (modalElement) => {
-    modalElement.classList.add("modal__open");
+    modalElement.classList.add("modal_open");
     document.addEventListener('keydown', escCloseModalWindow);
 };
 
 const closeModalWindow = (modalElement) => {
-    modalElement.classList.remove("modal__open");
+    modalElement.classList.remove("modal_open");
     document.removeEventListener('keydown', escCloseModalWindow);
 };
 
 const escCloseModalWindow = (evt) => {
-    const openWindow = document.querySelector(".modal__open");
+    const openWindow = document.querySelector(".modal_open");
     if (evt.key === 'Escape') {
     closeModalWindow(openWindow)
 }};
@@ -122,7 +122,7 @@ const addCardSubmitHandler = (evt) => {
 
 //функции Просмоторщика
 const photoClick = (src, textcontent) => {
-    openModalWindow(modalViewer); //modalViewer.classList.toggle("modal__open");
+    openModalWindow(modalViewer);
     modalViewerTitle.textContent = textcontent;
     modalViewerPhotoUrl.src = src;
   }
@@ -149,7 +149,7 @@ modalAddCard.addEventListener('mousedown', (evt) => {
 // слушатели нажатий и последующие действия
 //редактирования профиля
 openProfileModalWindow.addEventListener("click", () =>{
-    if(!modalEditProfile.classList.contains("modal__open")) {
+    if(!modalEditProfile.classList.contains("modal_open")) {
         nameInput.value = profileName.textContent; //подставляем имя в модалку
         jobInput.value = profileComment.textContent; //подставляем комент в модалку
         }
