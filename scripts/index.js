@@ -128,31 +128,23 @@ const photoClick = (src, textcontent) => {
   }
 
 //закрытие модальных окон кликом по оверлею
-modalViewer.addEventListener('click', (evt) => {
-    if(!evt.target.closest('.modal__photo')) {
-      closeModalWindow(modalViewer);
+//тут начинается магия недоступная даже Хогвартсу
+//Спасибо за помощь! Я изучил все ошибки - понял и смысл ваших требований и как работают функции.
+function closeByOverlay (event) {
+    if (event.target.classList.contains("modal")) {
+        closeModalWindow(event.target);
     }
-});
+};
 
-modalEditProfile.addEventListener('mousedown', (evt) => {
-    if(!evt.target.closest('.modal__content')) {
-      closeModalWindow(modalEditProfile);
-    }
-});
-
-modalAddCard.addEventListener('mousedown', (evt) => {
-    if(!evt.target.closest('.modal__content')) {
-      closeModalWindow(modalAddCard);
-    }
-});
+modalViewer.addEventListener('click', closeByOverlay);
+modalEditProfile.addEventListener('mousedown', closeByOverlay);
+modalAddCard.addEventListener('mousedown', closeByOverlay);
 
 // слушатели нажатий и последующие действия
 //редактирования профиля
 openProfileModalWindow.addEventListener("click", () =>{
-    if(!modalEditProfile.classList.contains("modal_open")) {
-        nameInput.value = profileName.textContent; //подставляем имя в модалку
-        jobInput.value = profileComment.textContent; //подставляем комент в модалку
-        }
+    nameInput.value = profileName.textContent; //подставляем имя в модалку
+    jobInput.value = profileComment.textContent; //подставляем комент в модалку
     openModalWindow(modalEditProfile);
 });
 
@@ -175,7 +167,7 @@ formCardElement.addEventListener("submit", addCardSubmitHandler);
 
 //вкл выкл просмоторщик
 closeViewer.addEventListener("click", () => {
-    openModalWindow(modalViewer);
+    closeModalWindow(modalViewer);
 });
 
 //загрузка массива карточек на сайт
