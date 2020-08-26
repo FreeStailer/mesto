@@ -179,7 +179,7 @@ formElement.addEventListener("submit", formSubmitHandler);
 openCardModalWindow.addEventListener("click", () => {
     openModalWindow(modalAddCard);
     formCardElement.reset();
-    //new FormValidator(selectorFolder, formElement).enableValidation(cardSaveButton);
+    new FormValidator(selectorFolder, formElement).enableValidation(cardSaveButton);
 });
 
 closeAddCard.addEventListener("click", () => {

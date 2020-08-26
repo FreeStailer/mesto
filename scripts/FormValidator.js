@@ -52,15 +52,19 @@ class FormValidator {
       }
   };
   
-    //метод установки слушателей и 
+    enableValidation () {
+        this.validItem.addEventListener("submit", (evt) => {
+          evt.preventDefault();
+        });
+        this._setEventListeners();
+      };
+
+//метод установки слушателей и 
   
-    _setEventListeners = (openButton) => {
+    _setEventListeners = () => {
       const inputs = Array.from(this.validItem.querySelectorAll(this.inputSelector));
       const buttonElement = this.validItem.querySelector(this.submitButtonSelector);
-      openButton.addEventListener('click', () => {
-        this._validWindow();
-      });
-      this._checkButtonState(inputs, buttonElement);
+      this._checkButtonState(inputs, buttonElement, this.submitButtonSelector, this.inactiveButtonClass);
       inputs.forEach((inputElement) => {
         inputElement.addEventListener("input", () => {
           this._checkInputValidity(this.validItem, inputElement);
@@ -68,19 +72,5 @@ class FormValidator {
         });
       });
     };
-
-    //валидность при открытии окна, в прошлом спринте мы пользовались кроссвалидацией в индексе(что было не корректно)
-    _validWindow() {
-      const buttonElement = this.validItem.querySelector(this.submitButtonSelector);
-      const inputs = Array.from(this.validItem.querySelectorAll(this.inputSelector));
-      this._checkButtonState(inputs, buttonElement);
-    }
-  
-    enableValidation (openButton) {
-        this.validItem.addEventListener("submit", (evt) => {
-          evt.preventDefault();
-        });
-        this._setEventListeners(openButton);
-      };
   }
     export {FormValidator}
