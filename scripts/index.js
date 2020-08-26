@@ -1,3 +1,17 @@
+import {FormValidator} from './FormValidator.js';
+//import * from './Card.js'
+
+//perenesti v index
+
+const selectorFolder = {
+    formSelector: ".form",
+    inputSelector: ".form__item",
+    submitButtonSelector: ".form__button",
+    inactiveButtonClass: "form__button_disabled",
+    inputErrorClass: "form__item_type_error",
+    errorClass: "form__input-error_active",
+  };
+
 // массив начальных картинок
 const initialCards = [
     {
@@ -25,6 +39,9 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
+
+
 // находим разделы модалок через модификаторы
 const modalEditProfile = document.querySelector(".modal_profile"); //окно изменения профиля
 const modalAddCard = document.querySelector(".modal_card");//окно добавления карточки
@@ -36,6 +53,10 @@ const openCardModalWindow = document.querySelector(".profile__button-add"); //и
 const closeProfile = modalEditProfile.querySelector(".modal__button-close"); //ищем кнопку закрытия всех модалок
 const closeAddCard = modalAddCard.querySelector(".modal__button-close");
 const closeViewer = modalViewer.querySelector(".modal__button-close");
+
+//
+const profileSaveButton = modalEditProfile.querySelector(".form__button");
+const cardSaveButton = modalAddCard.querySelector(".form__button");
 
 //атрибуты профиля в ДОМ
 const formElement = modalEditProfile.querySelector(".form"); //форма модального окна 
@@ -158,8 +179,9 @@ formElement.addEventListener("submit", formSubmitHandler);
 openCardModalWindow.addEventListener("click", () => {
     openModalWindow(modalAddCard);
     formCardElement.reset();
-    enableValidation(settings);
+    //new FormValidator(selectorFolder, formElement).enableValidation(cardSaveButton);
 });
+
 closeAddCard.addEventListener("click", () => {
     closeModalWindow(modalAddCard);
 });
@@ -169,6 +191,10 @@ formCardElement.addEventListener("submit", addCardSubmitHandler);
 closeViewer.addEventListener("click", () => {
     closeModalWindow(modalViewer);
 });
+
+new FormValidator(selectorFolder, formCardElement).enableValidation(profileSaveButton);
+new FormValidator(selectorFolder, formElement).enableValidation(cardSaveButton);
+
 
 //загрузка массива карточек на сайт
 initialCards.forEach((data) => {
