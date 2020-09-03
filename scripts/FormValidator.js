@@ -39,6 +39,7 @@ class FormValidator {
       return inputs.some((inputElement) => {
         return !inputElement.validity.valid;
       });
+      console.log(_hasInvalidInput(inputs));
     };
   
     //функция изменения кнопки при вводе правильных данных

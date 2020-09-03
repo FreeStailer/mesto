@@ -139,6 +139,8 @@ const addCardSubmitHandler = (evt) => {
     closeModalWindow(modalAddCard);
     titleInput.value = "";
     photoInput.value = "";
+    cardSaveButton.classList.add("form__button_disabled");
+    cardSaveButton.disabled = true;
 }
 
 //функции Просмоторщика
@@ -179,7 +181,6 @@ formElement.addEventListener("submit", formSubmitHandler);
 openCardModalWindow.addEventListener("click", () => {
     openModalWindow(modalAddCard);
     formCardElement.reset();
-    new FormValidator(selectorFolder, formElement).enableValidation(cardSaveButton);
 });
 
 closeAddCard.addEventListener("click", () => {
@@ -194,7 +195,6 @@ closeViewer.addEventListener("click", () => {
 
 new FormValidator(selectorFolder, formCardElement).enableValidation(profileSaveButton);
 new FormValidator(selectorFolder, formElement).enableValidation(cardSaveButton);
-
 
 //загрузка массива карточек на сайт
 initialCards.forEach((data) => {
