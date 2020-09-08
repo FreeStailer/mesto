@@ -1,8 +1,7 @@
 import {FormValidator} from './FormValidator.js';
-//import * from './Card.js'
+import {Card} from './Card.js';
 
-//perenesti v index
-
+//тут массив для валидации
 const selectorFolder = {
     formSelector: ".form",
     inputSelector: ".form__item",
@@ -54,7 +53,7 @@ const closeProfile = modalEditProfile.querySelector(".modal__button-close"); //�
 const closeAddCard = modalAddCard.querySelector(".modal__button-close");
 const closeViewer = modalViewer.querySelector(".modal__button-close");
 
-//
+//Кнопки сохранения у форм
 const profileSaveButton = modalEditProfile.querySelector(".form__button");
 const cardSaveButton = modalAddCard.querySelector(".form__button");
 
@@ -93,7 +92,7 @@ const escCloseModalWindow = (evt) => {
     if (evt.key === 'Escape') {
     closeModalWindow(openWindow)
 }};
-////////////////////////////////////////
+
 //функция передачи данных из формы в профиль на странице
 const formSubmitHandler = (evt) => {
     evt.preventDefault();
@@ -102,35 +101,44 @@ const formSubmitHandler = (evt) => {
     closeModalWindow(modalEditProfile);
 }
 
-//функция создания карточки
-const createCard = (data) => {
-    const cardElement = cardTemplate.cloneNode(true);
-    const cardTitle = cardElement.querySelector(".card__title");
-    const cardPhoto = cardElement.querySelector(".card__photo");
-    const cardLikeButton = cardElement.querySelector(".card__like");
-    const cardDeleteButton = cardElement.querySelector(".card__delete");
-//лайк карточки
-    cardLikeButton.addEventListener('click', (evt) =>
-    evt.target.classList.toggle("card__like_active")
-    )
-//удаление карточки
-    cardDeleteButton.addEventListener("click", (evt) =>
-    cardDeleteButton.closest(".card").remove()
-    );
-//нажатие просмотр картинки
-    cardPhoto.addEventListener("click", (evt) =>
-        photoClick(cardPhoto.src, cardTitle.textContent)
-    );
-//тянем из массива данные
-    cardTitle.textContent = data.name;
-    cardPhoto.src = data.link;
-    return cardElement;
+// //функция создания карточки
+// const createCard = (data) => {
+//     const cardElement = cardTemplate.cloneNode(true);
+//     const cardTitle = cardElement.querySelector(".card__title");
+//     const cardPhoto = cardElement.querySelector(".card__photo");
+//     const cardLikeButton = cardElement.querySelector(".card__like");
+//     const cardDeleteButton = cardElement.querySelector(".card__delete");
+// //лайк карточки
+//     cardLikeButton.addEventListener('click', (evt) =>
+//     evt.target.classList.toggle("card__like_active")
+//     )
+// //удаление карточки
+//     cardDeleteButton.addEventListener("click", (evt) =>
+//     cardDeleteButton.closest(".card").remove()
+//     );
+// //нажатие просмотр картинки
+//     cardPhoto.addEventListener("click", (evt) =>
+//         photoClick(cardPhoto.src, cardTitle.textContent)
+//     );
+// //тянем из массива данные
+//     cardTitle.textContent = data.name;
+//     cardPhoto.src = data.link;
+//     return cardElement;
+// }
+
+const newCreateCard = (data) => {
+    const newCard = new Card(data, "#card");
+    console.log("123");
+    const newCardElement = newCard.createCard(openCardModalWindow);
+    classList.prepend(newCardElement);
 }
 
+
+
 //функция загрузки массива
-const renderCard = (data) => {
-    cardList.prepend(createCard(data));  //порядок с начала и функция создания карточки
-}
+//const renderCard = (data) => {
+//    cardList.prepend(createCard(data));  //порядок с начала и функция создания карточки
+//}
 
 //функция нажатия кнопки сохранить карточку
 const addCardSubmitHandler = (evt) => {
@@ -151,20 +159,19 @@ const photoClick = (src, textcontent) => {
   }
 
 //закрытие модальных окон кликом по оверлею
-//тут начинается магия недоступная даже Хогвартсу
-//Спасибо за помощь! Я изучил все ошибки - понял и смысл ваших требований и как работают функции.
 function closeByOverlay (event) {
     if (event.target.classList.contains("modal")) {
         closeModalWindow(event.target);
     }
 };
 
+// слушатели нажатий и последующие действия
+//слушатель клика по оверлею
 modalViewer.addEventListener('click', closeByOverlay);
 modalEditProfile.addEventListener('mousedown', closeByOverlay);
 modalAddCard.addEventListener('mousedown', closeByOverlay);
 
-// слушатели нажатий и последующие действия
-//редактирования профиля
+//слушатель редактирования профиля
 openProfileModalWindow.addEventListener("click", () =>{
     nameInput.value = profileName.textContent; //подставляем имя в модалку
     jobInput.value = profileComment.textContent; //подставляем комент в модалку
@@ -177,7 +184,7 @@ closeProfile.addEventListener("click", () => {
 
 formElement.addEventListener("submit", formSubmitHandler);
 
-//загрузки карточки
+//слушатель загрузки карточки
 openCardModalWindow.addEventListener("click", () => {
     openModalWindow(modalAddCard);
     formCardElement.reset();
@@ -198,5 +205,6 @@ new FormValidator(selectorFolder, formElement).enableValidation(cardSaveButton);
 
 //загрузка массива карточек на сайт
 initialCards.forEach((data) => {
-    renderCard(data);
+    newCreateCard(data);
+    //    renderCard(data);
  });
