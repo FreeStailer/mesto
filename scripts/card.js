@@ -7,12 +7,13 @@ class Card {
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     }
-//element v card reneim
+
     _cardTemplate() {
-        this._card = document.querySelector(this._cardSelector).content.cloneNode(true);
+        const card = document.querySelector(this._cardSelector).content.querySelector(".card").cloneNode(true);
+        return card;
 }
 
-    _addEventListeners(callbackListener) {
+    _addEventListeners() {
         this._card.querySelector(".card__like").addEventListener('click', this._cardLike);
         this._card.querySelector(".card__delete").addEventListener('click', this._cardDelete);
         this._card.querySelector(".card__photo").addEventListener('click', () => {
@@ -20,11 +21,11 @@ class Card {
 })
 }
 
-    _cardLike = () => {
+    _cardLike() {
         this._cardLikeButton.classList.toggle("card__like_active");
     }
 
-    _cardDelete = () => {
+    _cardDelete() {
         this._card.remove();
         this._card = null;
 }
