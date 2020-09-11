@@ -69,12 +69,10 @@ const formCardElement = modalAddCard.querySelector(".form"); // форма мо�
 const titleInput = formCardElement.querySelector("#title"); //поле ввода названия карточки
 const photoInput = formCardElement.querySelector("#photo"); //поле ввода ссылки
 const cardList = document.querySelector(".cards");
-const cardTemplate = document.querySelector(".template-card").content.querySelector(".card");
 
 //атрибуты окна предпросмотра
 const modalViewerTitle = modalViewer.querySelector(".modal__title");
 const modalViewerPhotoUrl = modalViewer.querySelector(".modal__photo");
-const ModalWindow = document.querySelectorAll(".modal_open");
 
 //функции открытия и закрытия окон + ескейп
 const openModalWindow = (modalElement) => {
@@ -102,48 +100,16 @@ const formSubmitHandler = (evt) => {
 }
 
 // //функция создания карточки
-// const createCard = (data) => {
-//     const cardElement = cardTemplate.cloneNode(true);
-//     const cardTitle = cardElement.querySelector(".card__title");
-//     const cardPhoto = cardElement.querySelector(".card__photo");
-//     const cardLikeButton = cardElement.querySelector(".card__like");
-//     const cardDeleteButton = cardElement.querySelector(".card__delete");
-// //лайк карточки
-//     cardLikeButton.addEventListener('click', (evt) =>
-//     evt.target.classList.toggle("card__like_active")
-//     )
-// //удаление карточки
-//     cardDeleteButton.addEventListener("click", (evt) =>
-//     cardDeleteButton.closest(".card").remove()
-//     );
-// //нажатие просмотр картинки
-//     cardPhoto.addEventListener("click", (evt) =>
-//         photoClick(cardPhoto.src, cardTitle.textContent)
-//     );
-// //тянем из массива данные
-//     cardTitle.textContent = data.name;
-//     cardPhoto.src = data.link;
-//     return cardElement;
-// }
-
 const newCreateCard = (data) => {
-    const newCard = new Card(data, "#card");
-    console.log("123");
+    const newCard = new Card(data, ".template-card", photoClick);
     const newCardElement = newCard.createCard(openCardModalWindow);
-    classList.prepend(newCardElement);
+    cardList.prepend(newCardElement);
 }
-
-
-
-//функция загрузки массива
-//const renderCard = (data) => {
-//    cardList.prepend(createCard(data));  //порядок с начала и функция создания карточки
-//}
 
 //функция нажатия кнопки сохранить карточку
 const addCardSubmitHandler = (evt) => {
     evt.preventDefault();
-    renderCard({name:titleInput.value, link: photoInput.value});
+    newCreateCard({name:titleInput.value, link: photoInput.value});
     closeModalWindow(modalAddCard);
     titleInput.value = "";
     photoInput.value = "";
@@ -152,11 +118,11 @@ const addCardSubmitHandler = (evt) => {
 }
 
 //функции Просмоторщика
-const photoClick = (src, textcontent) => {
-    openModalWindow(modalViewer);
-    modalViewerTitle.textContent = textcontent;
-    modalViewerPhotoUrl.src = src;
-  }
+ const photoClick = (data) => {
+     openModalWindow(modalViewer);
+     modalViewerTitle.textContent = data.name;
+     modalViewerPhotoUrl.src = data.link;
+    }
 
 //закрытие модальных окон кликом по оверлею
 function closeByOverlay (event) {
@@ -206,5 +172,4 @@ new FormValidator(selectorFolder, formElement).enableValidation(cardSaveButton);
 //загрузка массива карточек на сайт
 initialCards.forEach((data) => {
     newCreateCard(data);
-    //    renderCard(data);
  });
