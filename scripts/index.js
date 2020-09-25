@@ -2,6 +2,7 @@ import {FormValidator} from './FormValidator.js';
 import {Card} from './card.js';
 
 //тут массив для валидации
+//создание constant.js это следующий спринт :) там сделаю
 const selectorFolder = {
     formSelector: ".form",
     inputSelector: ".form__item",
@@ -59,10 +60,10 @@ const cardSaveButton = modalAddCard.querySelector(".form__button");
 
 //атрибуты профиля в ДОМ
 const formElement = modalEditProfile.querySelector(".form"); //форма модального окна 
-let profileName = document.querySelector(".profile__name"); //имя в профиле
-let profileComment = document.querySelector(".profile__comment"); //коментарий в профиле
-let nameInput = formElement.querySelector("#name"); //поле ввода имени
-let jobInput = formElement.querySelector("#comment"); //поле ввода комментария
+const profileName = document.querySelector(".profile__name"); //имя в профиле
+const profileComment = document.querySelector(".profile__comment"); //коментарий в профиле
+const nameInput = formElement.querySelector("#name"); //поле ввода имени
+const jobInput = formElement.querySelector("#comment"); //поле ввода комментария
 
 //атрибуты загрузки карточки в ДОМ
 const formCardElement = modalAddCard.querySelector(".form"); // форма модального окна загрузки карточки
@@ -77,15 +78,15 @@ const modalViewerPhotoUrl = modalViewer.querySelector(".modal__photo");
 //функции открытия и закрытия окон + ескейп
 const openModalWindow = (modalElement) => {
     modalElement.classList.add("modal_open");
-    document.addEventListener('keydown', escCloseModalWindow);
+    document.addEventListener('keydown', CloseModalWindowByEsc);
 };
 
 const closeModalWindow = (modalElement) => {
     modalElement.classList.remove("modal_open");
-    document.removeEventListener('keydown', escCloseModalWindow);
+    document.removeEventListener('keydown', CloseModalWindowByEsc);
 };
 
-const escCloseModalWindow = (evt) => {
+const CloseModalWindowByEsc = (evt) => {
     const openWindow = document.querySelector(".modal_open");
     if (evt.key === 'Escape') {
     closeModalWindow(openWindow)
@@ -100,8 +101,8 @@ const formSubmitHandler = (evt) => {
 }
 
 // //функция создания карточки
-const newCreateCard = (data) => {
-    const newCard = new Card(data, ".template-card", photoClick);
+const createCard = (data) => {
+    const newCard = new Card(data, ".template-card", clickForPreview);
     const newCardElement = newCard.createCard(openCardModalWindow);
     cardList.prepend(newCardElement);
 }
@@ -109,7 +110,7 @@ const newCreateCard = (data) => {
 //функция нажатия кнопки сохранить карточку
 const addCardSubmitHandler = (evt) => {
     evt.preventDefault();
-    newCreateCard({name:titleInput.value, link: photoInput.value});
+    createCard({name:titleInput.value, link: photoInput.value});
     closeModalWindow(modalAddCard);
     titleInput.value = "";
     photoInput.value = "";
@@ -118,7 +119,7 @@ const addCardSubmitHandler = (evt) => {
 }
 
 //функции Просмоторщика
- const photoClick = (data) => {
+ const clickForPreview = (data) => {
      openModalWindow(modalViewer);
      modalViewerTitle.textContent = data.name;
      modalViewerPhotoUrl.src = data.link;
@@ -171,5 +172,5 @@ new FormValidator(selectorFolder, formElement).enableValidation(cardSaveButton);
 
 //загрузка массива карточек на сайт
 initialCards.forEach((data) => {
-    newCreateCard(data);
+    createCard(data);
  });

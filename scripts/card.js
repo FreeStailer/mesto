@@ -8,7 +8,7 @@ class Card {
     this._handleCardClick = handleCardClick;
     }
 
-    _cardTemplate() {
+    _getCardTemplate() {
         const card = document.querySelector(this._cardSelector).content.querySelector(".card").cloneNode(true);
         return card;
     }
@@ -35,7 +35,7 @@ class Card {
 
     //создание карточки
     createCard() {
-    this._card = this._cardTemplate();
+    this._card = this._getCardTemplate();
     this._imageSelector = this._card.querySelector(".card__photo");
     this._card.querySelector(".card__title").textContent = this._name;
     this._imageSelector.src = this._link;
