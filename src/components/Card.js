@@ -22,12 +22,10 @@ class Card {
         })
     }
 
-    //лайк карточки. Почему работает только со стрелочной функцией не понимаю.магия
     _cardLike = () => {
         this._cardLikeButton.classList.toggle("card__like_active");
     }
 
-    //удаление карточки. Почему работает только со стрелочной функцией не понимаю.магия
     _cardDelete = () => {
         this._card.remove();
         this._card = null;
@@ -39,6 +37,7 @@ class Card {
     this._imageSelector = this._card.querySelector(".card__photo");
     this._card.querySelector(".card__title").textContent = this._name;
     this._imageSelector.src = this._link;
+    this._imageSelector.alt = this._name;
     this._addEventListeners();
 
     return this._card

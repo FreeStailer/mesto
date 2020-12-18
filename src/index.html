@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Место</title>
-  <link rel="stylesheet" href="./pages/index.css">
   <meta name="description" content="О Местах">
   <meta name="keywords" content="html, css, javascript">
   <meta name="author" content="Алексей Суслин">
@@ -41,14 +40,14 @@
         <div class="modal__content">
             <button type="button" class="modal__button-close"></button>
             <h2 class="form__heading">Редактировать профиль</h2>
-            <form class="form" action="#" name="Edit profile">
+            <form id="edit-profile" class="form" action="#" name="Edit profile">
                 <fieldset class="form__input">
                     <label for="name" class="form__label">
-                        <input type="text" name="name" id="name" class="form__item" value="name" required minlength="2" maxlength="40">
+                        <input placeholder="Имя" type="text" name="name" id="name" class="form__item" value="name" required minlength="2" maxlength="40">
                         <span class="form__input-error" id="name-error"></span>
                     </label>
                     <label for="comment" class="form__label">
-                        <input type="text" id="comment" name="comment" class="form__item" value="comment" required minlength="2" maxlength="200">&nbsp;         
+                        <input placeholder="Комментарии" type="text" id="comment" name="comment" class="form__item" value="comment" required minlength="2" maxlength="200">&nbsp;         
                         <span class="form__input-error" id="comment-error"></span>
                     </label>
                     <input type="submit" class="form__button" value="Сохранить">        
@@ -60,7 +59,7 @@
         <div class="modal__content">
             <button type="button" class="modal__button-close"></button>
             <h2 class="form__heading">Новое место</h2>
-            <form class="form" action="#" name="Load_cards" novalidate>
+            <form id="load-cards" class="form" action="#" name="Load_cards" novalidate>
                 <fieldset class="form__input">
                     <label for="title" class="form__label">
                         <input type="text" name="title" id="title" class="form__item" placeholder="Название" required minlength="1" maxlength="30">
@@ -78,13 +77,14 @@
     <div class="modal modal_viewer">
         <div class="modal__content modal__content_viewer">
             <button type="button" class="modal__button-close"></button>
-            <img src="" class="modal__photo" alt="Картинка">
+            <img src="#" class="modal__photo" alt="Картинка">
             <h2 class="modal__title"></h2>
         </div>
     </div>
-    <template class='template-card'>
+    <div class="overlay"></div>
+    <template class="template-card">
         <li class="card">
-            <img src="" class="card__photo" alt="Картинка">
+            <img src="#" class="card__photo" alt="Картинка">
             <button type="button" class="card__delete"></button>
             <div class="card__text">
                 <h2 class="card__title"></h2>
@@ -92,5 +92,4 @@
             </div>
         </li>
     </template>
-    <script type="module" src="scripts/index.js"></script>
 </body>

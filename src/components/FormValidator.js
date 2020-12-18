@@ -12,9 +12,9 @@ class FormValidator {
   //функции показа  ошибки
     _showInputError = (formElement, inputElement, errorMessage) => {
       const errorElement = formElement.querySelector(`#${inputElement.name}-error`)
-      inputElement.classList.add(this.inputErrorClass);
-      errorElement.textContent = errorMessage;
-      errorElement.classList.add(this.errorClass);
+      inputElement.classList.add(this.inputErrorClass)
+      errorElement.textContent = errorMessage
+      errorElement.classList.add(this.errorClass)
     };
   
     //....и скрытия
