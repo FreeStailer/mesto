@@ -4,16 +4,16 @@ export class UserInfo {
         this._jobElement = document.querySelector(jobSelector);
     }
 
+    //получаем инфу о юзере
     getUserInfo() {
-        console.log("гетЮзерИнфо", this._nameElement.textContent, this._jobElement.textContent);
         return {
         name: this._nameElement.textContent,
         job: this._jobElement.textContent
         }
     }
 
+    //записываем инфу о юзере
     setUserInfo(newName, newJob) {
-        console.log("имя",newName, newJob,this._nameElement.textContent,this._jobElement.textContent);
         this._nameElement.textContent = newName;
         this._jobElement.textContent = newJob;
     }

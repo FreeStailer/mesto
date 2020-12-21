@@ -1,6 +1,6 @@
 //класс создания карточки
 
-class Card {
+export class Card {
     constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
@@ -37,12 +37,8 @@ class Card {
     this._imageSelector = this._card.querySelector(".card__photo");
     this._card.querySelector(".card__title").textContent = this._name;
     this._imageSelector.src = this._link;
-    this._imageSelector.alt = this._name;
-    //console.log(this._imageSelector.alt);
+    this._imageSelector.alt = this._name; //добавили альт картинкам и в сетку и новым
     this._addEventListeners();
-
     return this._card
     }
 }
-
-export {Card};

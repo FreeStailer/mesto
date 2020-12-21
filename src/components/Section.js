@@ -21,6 +21,5 @@ export class Section {
         } else {
             this._container.prepend(element);
         }
-
     }
 }

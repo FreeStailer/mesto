@@ -1,4 +1,4 @@
-class FormValidator {
+export class FormValidator {
     constructor(validSelector, validItem){
       this.formSelector = validSelector.formSelector;
       this.inputSelector = validSelector.inputSelector;
@@ -39,7 +39,6 @@ class FormValidator {
       return inputs.some((inputElement) => {
         return !inputElement.validity.valid;
       });
-      console.log(_hasInvalidInput(inputs));
     };
   
     //функция изменения кнопки при вводе правильных данных
@@ -74,4 +73,3 @@ class FormValidator {
       });
     };
   }
-    export {FormValidator}
