@@ -47,24 +47,28 @@ const addNewCard = (item) => {
     return card.createCard(open);
 }
 
-//попап профиля
+//submit имени и описания
 const profileFormSubmitHandler = (values) => {
-    userInfo.setUserInfo(values.name, values.job);
+    userInfo.setUserInfo(values.name, values.comment);
+    console.log("profileFormSubmitHandler",values.name, values.comment)
 }
 
 const profileAddSubmitHandler = (values) => {
-    const link = values.link;
-    const name = values.name;
+    const name = values.title;
+    const link = values.photo;
+    console.log("profileAddSubmitHandler", values.title, values.photo)
     section.addItem(addNewCard({link, name}));
 }
 
-const editPopup = new PopupWithForm(profileFormSubmitHandler, '.modal_profile');
-const photoPopup = new PopupWithForm(profileAddSubmitHandler, '.modal_card');
+const editPopup = new PopupWithForm(profileFormSubmitHandler, '#edit');
+const photoPopup = new PopupWithForm(profileAddSubmitHandler, '#photo-add');
 
 const openEditPopup = () => {
+    console.log("openEditPopup", nameInput.value)
     const userData = userInfo.getUserInfo();
     nameInput.value = userData.name;
     jobInput.value = userData.job;
+    console.log("openEditPopup", nameInput.value, userData.name)
     editPopup.open();
 }
 

@@ -36,18 +36,18 @@
             <p class="footer__copyright">©2020 Mesto Russia</p>
         </footer>
     </div>
-    <div class="modal modal_profile">
+    <div id="edit" class="modal modal_profile">
         <div class="modal__content">
             <button type="button" class="modal__button-close"></button>
             <h2 class="form__heading">Редактировать профиль</h2>
-            <form id="edit-profile" class="form" action="#" name="Edit profile">
+            <form id="edit-profile" class="form" action="#" name="Edit profile" method="GET">
                 <fieldset class="form__input">
                     <label for="name" class="form__label">
                         <input placeholder="Имя" type="text" name="name" id="name" class="form__item" value="name" required minlength="2" maxlength="40">
                         <span class="form__input-error" id="name-error"></span>
                     </label>
                     <label for="comment" class="form__label">
-                        <input placeholder="Комментарии" type="text" id="comment" name="comment" class="form__item" value="comment" required minlength="2" maxlength="200">&nbsp;         
+                        <input placeholder="комментарии" type="text" id="comment" name="comment" class="form__item" value="comment" required minlength="2" maxlength="200">&nbsp;         
                         <span class="form__input-error" id="comment-error"></span>
                     </label>
                     <input type="submit" class="form__button" value="Сохранить">        
@@ -55,7 +55,7 @@
             </form>
         </div>
     </div>
-    <div class="modal modal_card">
+    <div id="photo-add" class="modal modal_card">
         <div class="modal__content">
             <button type="button" class="modal__button-close"></button>
             <h2 class="form__heading">Новое место</h2>

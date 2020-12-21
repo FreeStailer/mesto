@@ -13,7 +13,7 @@ export class UserInfo {
     }
 
     setUserInfo(newName, newJob) {
-        console.log("имя",newName, newJob,this._nameElement,this._jobElement);
+        console.log("имя",newName, newJob,this._nameElement.textContent,this._jobElement.textContent);
         this._nameElement.textContent = newName;
         this._jobElement.textContent = newJob;
     }

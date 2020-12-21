@@ -38,6 +38,7 @@ class Card {
     this._card.querySelector(".card__title").textContent = this._name;
     this._imageSelector.src = this._link;
     this._imageSelector.alt = this._name;
+    //console.log(this._imageSelector.alt);
     this._addEventListeners();
 
     return this._card
