@@ -16,6 +16,9 @@ import {
     openCardButton,
     selectorFolder,
     initialCards, //массив карточек
+    edit,
+    photoAdd,
+    templateCard,
 } from "../utils/constants.js";
 
 const userInfo = new UserInfo({nameSelector: '.profile__name', jobSelector: '.profile__comment'}); //обрабатываем данные с помощью класса юзер инфо.js
@@ -29,33 +32,37 @@ const clickForPreview = (item) => {
 
 //функция создания карточки
 const addNewCard = (item) => {
-    const card = new Card(item, '.template-card', clickForPreview);
+    const card = new Card(item, templateCard, clickForPreview);
     return card.createCard(open);
 }
 
-const profileAddSubmitHandler = (values) => {
+const handleImageFormSubmit = (values) => {
     const name = values.title;
     const link = values.photo;
     section.addItem(addNewCard({link, name}));
 }
 
 //submit имени и описания
-const profileFormSubmitHandler = (values) => {
+const handleProfileFormSubmit = (values) => {
     userInfo.setUserInfo(values.name, values.comment);
 }
 
-const editPopup = new PopupWithForm(profileFormSubmitHandler, '#edit');
-const photoPopup = new PopupWithForm(profileAddSubmitHandler, '#photo-add');
+const editPopup = new PopupWithForm(handleProfileFormSubmit, edit);
+const photoPopup = new PopupWithForm(handleImageFormSubmit, photoAdd);
 
 const openEditPopup = () => {
     const userData = userInfo.getUserInfo();
     nameInput.value = userData.name;
     jobInput.value = userData.job;
     editPopup.open();
+    const validateOpenForm = new FormValidator(selectorFolder, formNameElement);
+    validateOpenForm.validateForm();
 }
 
 const openAddPopup = () => {
     photoPopup.open();
+    const validateOpenForm = new FormValidator(selectorFolder, formPhotoElement);
+    validateOpenForm.validateForm();
 }
 
 //слушатели из классов вышенаписаное
@@ -66,8 +73,12 @@ photoPopup.setEventListeners();
 openProfileButton.addEventListener('click', openEditPopup);
 openCardButton.addEventListener('click', openAddPopup);
 
-new FormValidator(selectorFolder, formNameElement).enableValidation(openProfileModalWindow);
-new FormValidator(selectorFolder, formPhotoElement).enableValidation(openCardModalWindow);
+const profileFormValidator = new FormValidator(selectorFolder, formNameElement);
+profileFormValidator.enableValidation();
+
+const imageFormValidator = new FormValidator(selectorFolder, formPhotoElement);
+imageFormValidator.enableValidation();
+
 
 const section = new Section({items: initialCards, renderer: addNewCard}, '.cards');
 section.renderItems();

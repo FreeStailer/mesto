@@ -8,8 +8,18 @@ export class FormValidator {
       this.errorClass = validSelector.errorClass;
       this.validItem = validItem;
     }
+
+  //проверка формы при открытии
+    validateForm() {
+      const buttonElement = this.validItem.querySelector(this.submitButtonSelector);
+      const inputs = Array.from(this.validItem.querySelectorAll(this.inputSelector));
+      this._checkButtonState(inputs, buttonElement, this.submitButtonSelector, this.inputSelector);
+      inputs.forEach((input) => {
+      this._hideInputError(this.validItem, input)
+      });
+    }
   
-  //функции показа  ошибки
+  //функции добавления стилей ошибки
     _showInputError = (formElement, inputElement, errorMessage) => {
       const errorElement = formElement.querySelector(`#${inputElement.name}-error`)
       inputElement.classList.add(this.inputErrorClass)
@@ -17,7 +27,7 @@ export class FormValidator {
       errorElement.classList.add(this.errorClass)
     };
   
-    //....и скрытия
+    //....и скрытия ошибок
     _hideInputError = (formElement, inputElement) => {
       const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
       inputElement.classList.remove(this.inputErrorClass);
@@ -59,11 +69,12 @@ export class FormValidator {
         this._setEventListeners();
       };
 
-//метод установки слушателей и 
+//метод установки слушателей и проверка кнопки
+//плюс слушаем новую проверку открытия формы
   
-    _setEventListeners = () => {
+    _setEventListeners() {
       const inputs = Array.from(this.validItem.querySelectorAll(this.inputSelector));
-      const buttonElement = this.validItem.querySelector(this.submitButtonSelector);
+      const buttonElement = this.validItem.querySelector(this.submitButtonSelector);      
       this._checkButtonState(inputs, buttonElement, this.submitButtonSelector, this.inactiveButtonClass);
       inputs.forEach((inputElement) => {
         inputElement.addEventListener("input", () => {

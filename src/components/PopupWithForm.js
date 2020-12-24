@@ -12,9 +12,7 @@ export class PopupWithForm extends Popup {
     _getInputValues() {
         const result = {};
         Array.from(this._popup.querySelector('.form').elements).forEach((input) => {
-          if(input.type === 'url' || input.type === 'text') {
             result[input.name] = input.value;
-          }
         });
         return result;
       }
@@ -30,9 +28,7 @@ export class PopupWithForm extends Popup {
     }
     
     close = () => {
+        this._popup.querySelector('.form').reset();
         super.close();
-        return this._inputs.forEach(function (item) {
-            item.value = ""
-        })
     }
 }

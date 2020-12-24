@@ -19,16 +19,22 @@ module.exports = {
       },
       // добавили правило для обработки файлов
       {
-        // регулярное выражение, которое ищет все файлы с такими расширениями
-        test: /\.(png|svg|jpg|gif)$/,
-        // при обработке этих файлов нужно использовать file-loader
-        loader: 'file-loader'
-      },
+        test: /\.(png|svg|jpg|jpeg|gif)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name].[contenthash][ext]',
+        }
+      },
       {
-        // регулярное выражение, которое ищет все файлы с такими расширениями
-        test: /\.(otf|ttf|woff|woff2)$/,
-        // при обработке этих файлов нужно использовать file-loader
-        loader: 'file-loader'
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name].[contenthash][ext]',
+        }
+        //
+        // Вот это поворот ))))))
+        // В 5 вебпаке вообще не нужен file-loader для подключения картинок и шрифтов
+        //
       },
       {
         test: /\.html$/,
@@ -52,5 +58,8 @@ module.exports = {
         template: './src/index.html'
     }),
     new MiniCssExtractPlugin()
-]
+],
+devServer: {
+  open: true
+}
 };

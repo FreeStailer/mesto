@@ -12,7 +12,7 @@ export class Popup {
     
     //слушатель клика по оверлею
     setEventListeners() {
-        this._popup.addEventListener('click', (evt) => {
+        this._popup.addEventListener('mousedown', (evt) => {
           if (evt.target.classList.contains('modal') || evt.target.classList.contains('modal__button-close')) {
             this.close();
           }

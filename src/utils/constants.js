@@ -1,6 +1,10 @@
 export const nameInput = document.querySelector("#name"); //поле ввода имени
 export const jobInput = document.querySelector("#comment"); //поле ввода комментария
 
+export const edit = '#edit'; //переменная формы редактирования
+export const photoAdd = '#photo-add'; //переменная формы добавления картинки
+export const templateCard = '.template-card'; //переменная контейнера
+
 export const formNameElement = document.querySelector('#edit-profile') //форма редактирования профиля
 export const formPhotoElement = document.querySelector('#load-cards') //форма загрузки карточки
 
