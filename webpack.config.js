@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // подключили плагин
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); 
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // подключили плагин очистка dist
+
 
 module.exports = {
   entry: { main: './src/pages/index.js' },
@@ -57,7 +59,8 @@ module.exports = {
     new HtmlWebpackPlugin({
         template: './src/index.html'
     }),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
+    new CleanWebpackPlugin() // использовали плагин очистки Dist
 ],
 devServer: {
   open: true

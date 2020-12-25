@@ -7,15 +7,15 @@ export class FormValidator {
       this.inputErrorClass = validSelector.inputErrorClass;
       this.errorClass = validSelector.errorClass;
       this.validItem = validItem;
+      this._buttonElement = this.validItem.querySelector(this.submitButtonSelector);
+      this._inputs = Array.from(this.validItem.querySelectorAll(this.inputSelector));
     }
 
   //проверка формы при открытии
     validateForm() {
-      const buttonElement = this.validItem.querySelector(this.submitButtonSelector);
-      const inputs = Array.from(this.validItem.querySelectorAll(this.inputSelector));
-      this._checkButtonState(inputs, buttonElement, this.submitButtonSelector, this.inputSelector);
-      inputs.forEach((input) => {
-      this._hideInputError(this.validItem, input)
+      this._checkButtonState(this._inputs, this._buttonElement, this.submitButtonSelector, this.inputSelector);
+      this._inputs.forEach((input) => {
+        this._hideInputError(this.validItem, input);
       });
     }
   
@@ -72,14 +72,12 @@ export class FormValidator {
 //метод установки слушателей и проверка кнопки
 //плюс слушаем новую проверку открытия формы
   
-    _setEventListeners() {
-      const inputs = Array.from(this.validItem.querySelectorAll(this.inputSelector));
-      const buttonElement = this.validItem.querySelector(this.submitButtonSelector);      
-      this._checkButtonState(inputs, buttonElement, this.submitButtonSelector, this.inactiveButtonClass);
-      inputs.forEach((inputElement) => {
+    _setEventListeners() {    
+      this._checkButtonState(this._inputs, this._buttonElement, this.submitButtonSelector, this.inactiveButtonClass);
+      this._inputs.forEach((inputElement) => {
         inputElement.addEventListener("input", () => {
           this._checkInputValidity(this.validItem, inputElement);
-          this._checkButtonState(inputs, buttonElement);
+          this._checkButtonState(this._inputs, this._buttonElement);
         });
       });
     };

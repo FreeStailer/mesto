@@ -55,14 +55,12 @@ const openEditPopup = () => {
     nameInput.value = userData.name;
     jobInput.value = userData.job;
     editPopup.open();
-    const validateOpenForm = new FormValidator(selectorFolder, formNameElement);
-    validateOpenForm.validateForm();
+    profileFormValidator.validateForm();
 }
 
 const openAddPopup = () => {
     photoPopup.open();
-    const validateOpenForm = new FormValidator(selectorFolder, formPhotoElement);
-    validateOpenForm.validateForm();
+    imageFormValidator.validateForm();
 }
 
 //слушатели из классов вышенаписаное
