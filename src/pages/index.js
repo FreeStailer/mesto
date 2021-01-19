@@ -10,8 +10,6 @@ import {
     nameInput,
     formNameElement,
     formPhotoElement,
-    openProfileModalWindow,
-    openCardModalWindow,
     openProfileButton,
     openCardButton,
     selectorFolder,
@@ -20,10 +18,19 @@ import {
     photoAdd,
     templateCard,
 } from "../utils/constants.js";
+import {Api} from "../components/Api.js";
 
 const userInfo = new UserInfo({nameSelector: '.profile__name', jobSelector: '.profile__comment'}); //обрабатываем данные с помощью класса юзер инфо.js
 const imagePopup = new PopupWithImage('.modal_viewer');
 
+//поключаемся к апиай или апи
+const api = new Api({
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-19',
+    headers: {
+        authorization: '047d2b93-9a25-4779-80e5-3e6df788b9a7',
+        'Content-Type': 'application/json'
+    }
+})
 
 //функции Просмоторщика
 const clickForPreview = (item) => {
