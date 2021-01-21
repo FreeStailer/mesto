@@ -29,7 +29,7 @@ export class Api {
     //добавить карточку
     addUserCard(values) {
         return this._fetch('/cards', 'POST', JSON.stringify({
-            name: values.name,
+            name: values.title,
             link: values.link
         }))
     }
