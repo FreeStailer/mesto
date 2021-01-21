@@ -1,0 +1,10 @@
+.card__like-data {
+    margin: 3px 24px;
+    min-width: 9px;
+    font-family: Inter, 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+}

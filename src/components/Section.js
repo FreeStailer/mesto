@@ -9,7 +9,6 @@ export class Section {
         const renderedItems = this._items.map(item =>
             this._renderer(item)
         )
-
         this.addItem(renderedItems)
     }
 

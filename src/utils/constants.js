@@ -1,18 +1,18 @@
 export const nameInput = document.querySelector("#name"); //поле ввода имени
-export const jobInput = document.querySelector("#comment"); //поле ввода комментария
+export const jobInput = document.querySelector("#about"); //поле ввода комментария
 
 export const edit = '#edit'; //переменная формы редактирования
 export const photoAdd = '#photo-add'; //переменная формы добавления картинки
-export const templateCard = '.template-card'; //переменная контейнера
+export const avatarAdd = '#avatar'; //переменная формы добавления аватарки
+export const popupDel = '#del-popup'; //переменная формы удаления картинки
 
 export const formNameElement = document.querySelector('#edit-profile') //форма редактирования профиля
 export const formPhotoElement = document.querySelector('#load-cards') //форма загрузки карточки
-
-export const openProfileModalWindow = document.querySelector(".profile__button-edit"); //ищем кнопку открытия окна профиля
-export const openCardModalWindow = document.querySelector(".profile__button-add"); //ищем кнопку открытия окна загрузки карточки
+export const formAvatarElement = document.querySelector('#load-avatar') //форма загрузки аватарки
 
 export const openProfileButton = document.querySelector(".profile__button-edit"); //для слушателя кнопка открытия окна профиля
 export const openCardButton = document.querySelector(".profile__button-add"); //для слушателя кнопкаоткрытия окна загрузки карточки
+export const openAvatarButton = document.querySelector(".profile__avatar-edit-button"); //для слушателя кнопкаоткрытия окна загрузки аватарки
 
 
 export const selectorFolder = {
@@ -23,31 +23,3 @@ export const selectorFolder = {
     inputErrorClass: "form__item_type_error",
     errorClass: "form__input-error_active",
   };
-
-  // массив начальных картинок
-export const initialCards = [
-  {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];

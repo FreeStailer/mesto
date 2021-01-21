@@ -2,6 +2,10 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
+    object-fit: none;
+    position: relative;
+    background-size: cover;
+    background-position: center;
 }
 
 @media screen and (max-width: 480px) {

@@ -11,6 +11,7 @@ export class PopupWithForm extends Popup {
     //получаем введенные данные
     _getInputValues() {
         const result = {};
+        //this._inputs.forEach(input => result[input.name] = input.value);
         Array.from(this._popup.querySelector('.form').elements).forEach((input) => {
             result[input.name] = input.value;
         });
@@ -20,7 +21,7 @@ export class PopupWithForm extends Popup {
     //слушаем и передаем введенные данные
     setEventListeners() {
         super.setEventListeners();
-        this._form.addEventListener("submit", (evt) =>{
+        this._form.addEventListener("submit", (evt) => {
             evt.preventDefault();
             this._submitCallback(this._getInputValues());
             this.close();

@@ -1,5 +1,6 @@
 .form__button {
-  width: 100%;
+  width: 358px;
+  /* width: 100%; */
   min-height: 50px;
   font-style: normal;
   font-weight: normal;
@@ -24,6 +25,7 @@
 
 @media screen and (max-width: 480px) {
   .form__button {
+    width: 100%;
     font-size: 14px;
   }
 }

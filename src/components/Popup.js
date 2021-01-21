@@ -1,7 +1,25 @@
 export class Popup {
     constructor(popupSelector) {
-        this._popup = document.querySelector(popupSelector)
+        this._popup = document.querySelector(popupSelector);
+        this._submitButton = this._popup.querySelector('.form__button');
+        }
+
+    renderLoadingProfile(isLoading) {
+        if (isLoading) {
+            this._submitButton.textContent = 'Сохранение...'
+        } else {
+            this._submitButton.textContent = 'Сохранить'
+        }
     }
+
+    renderLoadingPhoto(isLoading) {
+        if (isLoading) {
+            this._submitButton.textContent = 'Создание...'
+        } else {
+            this._submitButton.textContent = 'Создать'
+        }
+    }
+
 
     //частный метод закрытия по ескейпу
     _handleEscClose = (evt) => {

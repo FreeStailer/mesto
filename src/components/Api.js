@@ -29,7 +29,7 @@ export class Api {
     //добавить карточку
     addUserCard(values) {
         return this._fetch('/cards', 'POST', JSON.stringify({
-            name: values.place,  //вместо плейс нейм
+            name: values.name,
             link: values.link
         }))
     }
@@ -51,22 +51,21 @@ export class Api {
 
     //получить имя и професию с сервака
     getUserData() {
-        return this._fetch('users/me', 'GET')
+        return this._fetch('/users/me', 'GET')
     }
 
     //изменить имя и професию на серваке
     patchUserData(values) {
-        return this._fetch('users/me', 'PATCH', JSON.stringify({
+        return this._fetch('/users/me', 'PATCH', JSON.stringify({
             name: values.name,
-            about: values.job 
-        })) 
+            about: values.about
+        }))
     }
 
     // изменить аватарку на серваке
     patchUserAvatar(values) {
-        return this._fetch('users/me/avatar', 'PATH', JSON.stringify({
-            avatar: values.link
+        return this._fetch('/users/me/avatar', 'PATCH', JSON.stringify({
+            avatar: values.avatar
         }))
     }
-
 }

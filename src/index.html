@@ -17,11 +17,13 @@
         <main class="main">
             <section class="profile">
                 <div class="profile__card">
-                    <img src="./images/avatar.jpg" alt="Аватар профиля" class="profile__avatar">
+                    <div class="profile__avatar">
+                        <button class="profile__avatar profile__avatar-edit-button" type="button"></button>
+                    </div>
                     <div class="profile__info">
-                        <h1 class="profile__name">Алексей Суслин</h1>
+                        <h1 class="profile__name"></h1>
                         <button type="button" class="profile__button-edit"></button>
-                        <p class="profile__comment">Отдел Обеспечения Процессинга</p>
+                        <p class="profile__comment"></p>
                     </div>
                 </div>
                 <button type="button" class="profile__button-add"></button>
@@ -46,11 +48,11 @@
                         <input placeholder="Имя" type="text" name="name" id="name" class="form__item" value="name" required minlength="2" maxlength="40">
                         <span class="form__input-error" id="name-error"></span>
                     </label>
-                    <label for="comment" class="form__label">
-                        <input placeholder="комментарии" type="text" id="comment" name="comment" class="form__item" value="comment" required minlength="2" maxlength="200">&nbsp;         
-                        <span class="form__input-error" id="comment-error"></span>
+                    <label for="about" class="form__label">
+                        <input placeholder="комментарии" type="text" id="about" name="about" class="form__item" value="about" required minlength="2" maxlength="200">&nbsp;         
+                        <span class="form__input-error" id="about-error"></span>
                     </label>
-                    <input type="submit" class="form__button" value="Сохранить">        
+                    <button type="submit" class="form__button">Сохранить</button>
                 </fieldset>
             </form>
         </div>
@@ -62,14 +64,40 @@
             <form id="load-cards" class="form" action="#" name="Load_cards" novalidate>
                 <fieldset class="form__input">
                     <label for="title" class="form__label">
-                        <input type="text" name="title" id="title" class="form__item" placeholder="Название" required minlength="1" maxlength="30">
-                        <span class="form__input-error" id="title-error"></span>
+                        <input type="text" name="name" id="title" class="form__item" placeholder="Название" required minlength="1" maxlength="30">
+                        <span class="form__input-error" id="name-error"></span>
                     </label>
                     <label for="photo" class="form__label">
-                        <input type="url" id="photo" name="photo" class="form__item" placeholder="Ссылка на картинку" required>&nbsp;         
-                        <span class="form__input-error" id="photo-error"></span>
+                        <input type="url" id="photo" name="link" class="form__item" placeholder="Ссылка на картинку" required>&nbsp;         
+                        <span class="form__input-error" id="link-error"></span>
                     </label>
-                    <input type="submit" class="form__button" value="Создать" disabled>
+                    <button type="submit" class="form__button" disabled>Создать</button>
+                </fieldset>        
+            </form>
+        </div>
+    </div>
+    <div id="avatar" class="modal modal_card">
+        <div class="modal__content">
+            <button type="button" class="modal__button-close"></button>
+            <h2 class="modal__heading">Обновить аватар</h2>
+            <form id="load-avatar" class="form" action="#" name="Load_avatar" novalidate>
+                <fieldset class="form__input">
+                    <label for="avatar" class="form__label">
+                        <input type="url" id="avatar" name="avatar" class="form__item" placeholder="Ссылка на аватар" required>&nbsp;         
+                        <span class="form__input-error" id="avatar-error"></span>
+                    </label>
+                    <button type="submit" class="form__button" disabled>Сохранить</button>
+                </fieldset>        
+            </form>
+        </div>
+    </div>
+    <div id="del-popup" class="modal modal_card">
+        <div class="modal__content">
+            <button type="button" class="modal__button-close"></button>
+            <h2 class="modal__heading">Вы уверены?</h2>
+            <form class="form" action="#" novalidate>
+                <fieldset class="form__input">
+                    <button type="submit" class="form__button">Да</button>
                 </fieldset>        
             </form>
         </div>
@@ -82,13 +110,16 @@
         </div>
     </div>
     <div class="overlay"></div>
-    <template class="template-card">
+    <template id="card" class="template-card">
         <li class="card">
             <img src="#" class="card__photo" alt="Картинка">
             <button type="button" class="card__delete"></button>
             <div class="card__text">
                 <h2 class="card__title"></h2>
-                <button type="button" class="card__like"></button>
+                <div class="card__like-container">
+                    <button type="button" class="card__like"></button>
+                    <p class="card__like-data"></p>
+                </div>
             </div>
         </li>
     </template>
