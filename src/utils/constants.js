@@ -3,7 +3,7 @@ export const jobInput = document.querySelector("#about"); //поле ввода 
 
 export const edit = '#edit'; //переменная формы редактирования
 export const photoAdd = '#photo-add'; //переменная формы добавления картинки
-export const avatarAdd = '#avatar'; //переменная формы добавления аватарки
+export const avatarAdd = '#avatar-add'; //переменная формы добавления аватарки
 export const popupDel = '#del-popup'; //переменная формы удаления картинки
 
 export const formNameElement = document.querySelector('#edit-profile') //форма редактирования профиля

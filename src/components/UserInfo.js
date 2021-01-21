@@ -18,10 +18,9 @@ export class UserInfo {
         this._jobElement.textContent = newJob;
     }
 
-    //avatar
+    //установка аватарки
     setUserAvatar(newAvatar) {
         this._avatar.style.backgroundImage = `url('${newAvatar}')`;
-        //console.log(newAvatar);
     }
 
     //user id
