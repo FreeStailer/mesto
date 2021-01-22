@@ -152,31 +152,6 @@ const openAvatarPopup = () => {
     avatarPopup.open()
 }
 
-//Загрузка карточек на сайт
-const loadCards = () => {
-    api.getInitialCards()
-    .then((result) => {
-        section = new Section({items: result, renderer: addNewCard}, '.cards');
-        section.renderItems();
-    })
-    .catch((err) => {
-        console.log('Ошибка в лоад кардс', err);
-    })
-}
-
-//загрузка данных профиля юзера
-const loadUser = () => {
-    api.getUserData()
-    .then((res) => {
-        userInfo.setUserInfo(res.name, res.about)
-        userInfo.setUserAvatar(res.avatar)
-        userInfo.setUserId(res._id)
-    })
-    .catch((err) => {
-        console.log(err);
-    })
-}
-
 const editPopup = new PopupWithForm(profileFormSubmitHandler, edit);
 const photoPopup = new PopupWithForm(profileAddSubmitHandler, photoAdd);
 const avatarPopup = new PopupWithForm(avatarSubmitHandler, avatarAdd);
@@ -203,6 +178,24 @@ imageFormValidator.enableValidation();
 const avatarFormValidator = new FormValidator(selectorFolder, formAvatarElement);
 avatarFormValidator.enableValidation();
 
+// спасибо за совет по Petitor'у
+// но пока без него сдам работу
+// т.к. если он отформатирует всё 
+// под себя я не узнаю сам же свой код
+// ...надо постепенно :)
 
-loadUser()
-loadCards()
+Promise.all([
+    api.getUserData(),
+    api.getInitialCards()
+  ])
+    .then(values => {
+        const [userData, initialCards] = values;
+        userInfo.setUserInfo(userData.name, userData.about);
+        userInfo.setUserAvatar(userData.avatar);
+        userInfo.setUserId(userData._id);
+        section = new Section({items: initialCards, renderer: addNewCard}, '.cards');
+        section.renderItems();
+    })
+    .catch((err) => {
+        console.log(err);
+    })

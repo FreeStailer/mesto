@@ -6,6 +6,8 @@
     position: relative;
     background-size: cover;
     background-position: center;
+    flex-shrink: 0;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 480px) {
